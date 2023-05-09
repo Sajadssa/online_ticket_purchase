@@ -1,0 +1,615 @@
+/* import font iranYekan */
+@import url("./assets/font.css");
+
+/* ریست html */
+* {
+  box-sizing: border-box;
+  font-family: "IranYekan";
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  margin: 0;
+}
+/* تعریف متغیرها */
+:root {
+  --primaryColor: #6d28d9;
+  --secondaryColor: #ede9fe;
+  --mainWhite: #fff;
+  --mainBlack: #222;
+  --mainGrey: #7c7c7c;
+  --mainSpacing: 0.1rem;
+  --mainTransition: all 0.3s linear;
+  --mainRed: #db2777;
+  --bodyColor: #f6f6f6;
+}
+/* دادن استایل به بدنه سایت */
+html,
+body {
+  box-sizing: border-box;
+
+  outline-style: none;
+
+  overflow-x: hidden;
+  /* Background styles */
+  /* background-image: linear-gradient(
+      rgba(1, 1, 5, 0.5),
+      rgba(0, 0, 0, 0.5),
+      rgba(5, 0, 0, 0.3)
+    ),
+    url("assets/images/Ept_Banner.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; */
+  font-family: "IranYekan", sans-serif;
+  height: 100vh;
+  overflow-y: hidden;
+}
+/* منوی پیمایش */
+
+.nav_container {
+  width: 100%;
+  height: 80px;
+  box-shadow: 0 20px 120px rgba(209, 186, 186, 0.959);
+  background: var(--mainWhite);
+  border: 1px solid rgba(255, 255, 255, 0.966);
+
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+   
+}
+/* لیست منوی پیمایش */
+.nav_container .nav_link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  list-style-type: none;
+}
+/* آیتم های  لینک منو پیمایش */
+.nav_link .nav_item {
+  float: right;
+  font-size: 16px;
+  color:var(--mainBlack);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+/* تگ a منوی پیمایش */
+.nav_link .nav_item a {
+ color: var(--primaryColor);
+  text-decoration: none;
+}
+.nav_container .nav_link .nav_item a :active {
+  color: aqua;
+}
+
+/* منوی همبرگری */
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: var(--mainWhite);
+  margin: 5px 0;
+  border-radius: 5px;
+  transition: all 0.4s ease-in-out;
+  margin-right: 1rem;
+}
+
+.bar:hover {
+  color: aqua;
+}
+/* TOGGLER */
+
+.toggler {
+  cursor: pointer;
+  margin-left: 2rem;
+}
+
+.nav_expanded .bar-one {
+  transform: rotate(-45deg) translate(-9px, 6px);
+  margin: 8px 0;
+}
+
+.nav_expanded .bar-two {
+  transform: translate(-20px);
+  opacity: 0;
+}
+
+.nav_expanded .bar-three {
+  transform: rotate(45deg) translate(-8px, -8px);
+  margin: 8px 0;
+}
+
+.bar:hover {
+  color: #03161d;
+}
+
+/* logo */
+.logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 1rem;
+  
+
+}
+
+.logo img {
+margin-top: 1rem;
+  width: 100px;
+  height: 100px;
+  /* box-shadow: 1px 2px 3px 3px rgba(53, 60, 151, 0.2); */
+  /* border-radius: 50%; */
+  background-color: transparent;
+}
+
+/* change theme */
+.nav_container .uil  {
+    font-size: 1.8rem;
+    color: var(--primaryColor);
+    
+    cursor: pointer;
+}
+
+/* Add a blue background color to navigation links on hover */
+.navbar a:hover
+ {
+  box-shadow: 0 20px 120px rgba(0, 0, 0, 0.07);
+  border-radius: 5px;
+  backdrop-filter: blur(15px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  background-color: rgba(17, 25, 40, 0.3);
+
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+/* hero */
+/* blurring the image */
+.hero {
+  /* Sizing */
+  width: 100vw;
+  height: 100vh;
+
+  /* Flexbox stuff */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Text styles */
+  text-align: center;
+  color: white;
+  /* ADD THIS LINE */
+
+  /* Background styles */
+  /* background-image: linear-gradient(
+      rgba(42, 45, 110, 0.4),
+      rgba(11, 8, 120, 0.5),
+      rgba(45, 12, 111, 0.3)
+    ),
+    url("assets/images/Ept_Banner.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; */
+}
+
+.hero h1 {
+  /* Text styles */
+  font-size: 1.5em;
+
+  /* Margins */
+  margin-top: 3.5rem;
+  margin-bottom: 0.5em;
+}
+
+
+/* استایل به فرم ورود */
+.log_title {
+  color: var(--primaryColor);
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+.log_form_Container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 50%;
+  height: auto;
+  margin: 13% auto;
+ box-shadow: 3px 2px 70px rgba(209, 186, 186, 0.959);
+  background: var(--mainWhite);
+  border: 1px solid rgba(255, 255, 255, 0.966);
+ border-radius: 12px;
+ z-index: 0;
+ gap:2rem;
+}
+
+
+.log_form_Container form input {
+  font-size: 14px;
+  padding: 0.7rem;
+  border-radius: 12px;
+  outline-style: none;
+box-shadow: 0 20px 120px rgba(209, 186, 186, 0.959);
+  background: var(--mainWhite);
+   border: 1px solid rgba(255, 255, 255, 0.966);
+  width: 250px;
+  color: currentColor;
+}
+.btns {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.btn {
+box-shadow: 0 20px 120px rgba(209, 186, 186, 0.959);
+ background-color: var(--primaryColor);
+ border:none;
+  padding: 0.5rem;
+  border-radius: 7px;
+  color: var(--mainWhite);
+  font-size: 14px;
+  margin-top: 0.5rem;
+  width: 80px;
+  cursor: pointer;
+  transition: 1s ease-in-out;
+}
+
+.userinfo .btns a.btn {
+  text-decoration: none;
+  padding: 1.1rem;
+  text-align: center;
+}
+.log_footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  color:var(--primaryColor);
+}
+
+.log_footer > a {
+  text-decoration: none;
+  color: var(--mainGrey);
+
+  font-weight: bold;
+  font-size: 1rem;
+}
+.log_footer > a:hover {
+  color: var(--primaryColor);
+}
+.error {
+  background-color: #f2dede;
+  color: crimson;
+  padding: 10px;
+  width: 95%;
+  border-radius: 5px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus
+ {
+  border: 1px solid var(--primaryColor);
+}
+
+
+/* استایل به فرم ثبت نام */
+.reg_title {
+  color: var(--mainWhite);
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.reg_form_Container form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 60%;
+  height: auto;
+  margin: 120px auto 50px;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.75);
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.125);
+}
+
+
+.reg_form_Container form input {
+  font-size: 14px;
+  padding: 0.7rem;
+  border-radius: 12px;
+  outline-style: none;
+  box-shadow: 0 20px 120px rgba(0, 0, 0, 0.07);
+
+  backdrop-filter: blur(15px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  background-color: rgba(17, 25, 40, 0.3);
+
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  width: 250px;
+  color: var(--mainWhite);
+}
+
+.reg_form_desc {
+  display: flex;
+}
+.alert-info {
+  width: 200px;
+  height: auto;
+  background-color: rgba(4, 44, 21, 0.185);
+  color: var(--mainWhite);
+}
+
+/*  style to error  */
+.reg_form_Container form .error-msg {
+  margin: 10px 0;
+  display: block;
+  background-color: crimson;
+  color: var(--mainWhite);
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 10px;
+}
+/* about */
+.about_container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+
+  align-items: center;
+  max-width: 90%;
+  height: auto;
+  backdrop-filter: blur(15px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  background-color: rgba(17, 25, 40, 0.3);
+  border-radius: 7px;
+  margin: 2rem auto;
+  padding: 1rem;
+  color: var(--mainWhite);
+  line-height: 2;
+}
+.about_title h1 {
+  font-size: 1.9rem;
+  color: var(--mainWhite);
+  margin-top: 4rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+.about_title h5 {
+  color: var(--mainWhite);
+
+  padding: 0.2rem;
+  text-align: center;
+}
+/* tables */
+
+table {
+  width: 65%;
+  z-index: 1;
+  border-collapse: collapse;
+  color: black;
+  margin: 0 auto;
+  padding: 1rem;
+
+  border: 1px solid white;
+  backdrop-filter: blur(3px) saturate(70%);
+  -webkit-backdrop-filter: blur(5px) saturate(1%);
+  background-color: rgba(17, 25, 40, 0.3);
+
+  font-size: 13px;
+}
+
+
+
+table,
+th,
+td,
+tr,
+thead {
+  border: 1px solid white;
+  font-size: 13px;
+  color: white;
+}
+
+th {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+td {
+  padding: 0 0.2rem;
+}
+
+/* user panel */
+#userpanel {
+  width: 80%;
+  height: 100%;
+  backdrop-filter: blur(15px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  background-color: rgba(17, 25, 40, 0.3);
+  border-radius: 7px;
+  margin: 6rem auto 0;
+  padding: 2rem;
+}
+
+.user_profile {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+
+  border-radius: 7px;
+  padding: 0.7rem;
+}
+
+.user_profile form {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 0.5rem;
+}
+
+.user_profile form input {
+  font-size: 14px;
+  padding: 0.7rem;
+  border-radius: 12px;
+  outline-style: none;
+  box-shadow: 0 20px 120px rgba(0, 0, 0, 0.07);
+
+  backdrop-filter: blur(15px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  background-color: rgba(17, 25, 40, 0.3);
+
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  width: 250px;
+  color: var(--mainWhite);
+}
+
+.user_profile span {
+  color: white;
+}
+.user_profile #course {
+  box-shadow: 0 20px 120px rgba(0, 0, 0, 0.07);
+
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  background-color: rgba(17, 25, 40, 0.3);
+
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  width: 200px;
+
+  color: var(--mainWhite);
+  padding: 0.2rem;
+}
+
+/* contact us */
+#contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  backdrop-filter: blur(11px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  background-color: rgba(17, 25, 40, 0.3);
+
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  margin: 6rem auto 0;
+  padding: 1rem;
+  color: white;
+  text-align: center;
+  border-radius: 7px;
+  z-index: 1;
+}
+.contact_title h1 {
+  margin: 1.5rem auto 0;
+  text-align: center;
+  font-size: 20px;
+}
+.contact_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1rem;
+  backdrop-filter: blur(15px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  background-color: rgba(17, 25, 40, 0.3);
+
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  border-radius: 7px;
+}
+
+.contact__information {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.contact__icon {
+  font-size: 25px;
+  color: rgba(12, 201, 198, 0.8);
+}
+.contact__subtitle a {
+  color: rgba(13, 194, 240, 0.76);
+}
+.map {
+  border-radius: 5px;
+}
+
+/* استایل فرم زرین پال */
+
+.container {
+  margin: 50px auto;
+  max-width: 500px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+input[type="text"],
+
+input[type="radio"] {
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+ 
+}
+
+input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+input[type="radio"]:hover {
+  background-color: #f9f9f9;
+}
+
+input[type="radio"]:checked {
+  background-color: #4CAF50;
+  color: white;
+}
+
+
+input[type="radio"]:focus {
+  outline: 2px solid #4CAF50;
+}
+
+
+
+
+
