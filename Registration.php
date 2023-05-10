@@ -11,6 +11,7 @@ if (isset($_POST['register'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $pass =$_POST['pass'];
+    $mobile =$_POST['mobile'];
 
 
     if (!empty($name) && !empty($pass) &&  !empty($email) && !is_numeric($name)) {
@@ -21,7 +22,7 @@ if (isset($_POST['register'])) {
      
 
         try {
-            $query = "insert into users (user_id,username,email,pass) values ('$user_id','$name','$email','$pass')";
+            $query = "insert into users (user_id,username,email,pass,mobile) values ('$user_id','$name','$email','$pass','$mobile')";
 
 
             mysqli_query($con, $query);
@@ -34,7 +35,7 @@ if (isset($_POST['register'])) {
         catch (Exception $e) {
 
             echo 'Message: ' . $e->getMessage();
-            $msg = "<div class='danger' style='display:block;color:red;margin:5rem auto 0;text-align:center;'>  اطلاعات وارد شده نادرست است یا تکراری وارد شده است</div>";
+            $msg = "<div class='danger' style='display:flex; align-items:center;color:red;margin:10rem auto 0;text-align:center;'>  اطلاعات وارد شده نادرست است یا تکراری وارد شده است</div>";
             echo $msg;
            
         }
@@ -71,30 +72,22 @@ if (isset($_POST['register'])) {
 
             <h1 class="reg_title">فرم عضویت در سایت</h1>
 
-            <label for="user">نام کاربری
+            <input type="text" name="mobile" id="mobile" Placeholder=" تلفن همراه" required>
 
-            </label>
+
             <input type="text" name="name" id="user" Placeholder="نام کاربری" required>
 
-
-            <label for="email">پست الکترونیکی
-
-            </label>
             <input type="email" name="email" id="email" Placeholder="پست الکترونیکی" required>
 
-
-            <label for="password">رمز عبور
-
-            </label>
             <input type="password" name="pass" id="password" value="" maxlength="8" Placeholder=" رمز عبور" required>
 
             <div class="btns">
                 <button type="submit" name="register" class="btn register">ثبت </button>
-                <p style="color:white; display:flex; align-items:center; " class="reg_form_desc">
-                    کاربر وجود دارد؟
-                    <a href="Login.php" style="color:aqua;margin-right:.5rem;margin-bottom:.4rem"><b>ورود</b></a>
-                </p>
             </div>
+            <p class="reg_form_desc">
+                کاربر وجود دارد؟
+                <a href="Login.php"><b>ورود</b></a>
+            </p>
 
         </form>
     </div>

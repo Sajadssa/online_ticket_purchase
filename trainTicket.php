@@ -1,27 +1,80 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="UTF-8">
-	<title>فرم خرید بلیط قطار</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+    <title>فرم خرید آنلاین بلیط قطار</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    label {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"] {
+        margin: 5px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    input[type="submit"] {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #3e8e41;
+    }
+    </style>
 </head>
+
 <body>
-
-		<form method="post" action="buy_ticket.php">
-			<label for="from">مبدأ:</label>
-			<input type="text" id="from" name="from" required>
-			<label for="to">مقصد:</label>
-			<input type="text" id="to" name="to" required>
-			<label for="date">تاریخ:</label>
-			<input type="text" id="date" name="date" placeholder="روز/ماه/سال" required>
-			<input type="radio" id="one_way" name="trip_type" value="one_way" checked>
-			<label for="one_way">یک طرفه</label>
-			<input type="radio" id="round_trip" name="trip_type" value="round_trip">
-			<label for="round_trip">رفت و برگشت</label>
-			<input type="submit" value="خرید بلیط">
-		</form>
-	
-</body>
-</html>
-
-
+    <h1>فرم خرید آنلاین بلیط قطار</h1>
+    <form method="post" action="submit.php">
+        <label>
+            <input type="radio" name="ticket_type" value="one-way">
+            یک طرفه
+        </label>
+        <label>
+            <input type="radio" name="ticket_type" value="round-trip">
+            رفت و برگشت
+        </label>
+        <label>
+            مبدا:
+            <select name="origin">
+                <option value="tehran">تهران</option>
+                <option value="mashhad">مشهد</option>
+                <option value="isfahan">اصفهان</option>
+                <option value="shiraz">شیراز</option>
+            </select>
+        </label>
+        <label>
+            مقصد:
+            <select name="destination">
+                <option value="tehran">تهران</option>
+                <option value="mashhad">مشهد</option>
+                <option value="isfahan">اصفهان</option>
+                <option value="shiraz">شیراز</option>
+            </select>
+        </label>
+        <label>
+            تاریخ رفت:
+            <input type="date" name="departure_date" placeholder="تاریخ رفت (شمسی)">
+        </label>
