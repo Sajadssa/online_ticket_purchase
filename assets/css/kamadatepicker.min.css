@@ -1,0 +1,143 @@
+/* kamadatepicker - version 1.5.3 */
+/* import font iranYekan */
+@import url("./assets/css/font.css");
+*{
+  box-sizing: border-box;
+  font-family: "IranYekan";
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+.bd-hide {
+  display: none;
+}
+
+.bd-main {
+  background-color: #fff;
+  border: 1px solid hsl(300, 120%,25%);
+  border-radius: 7px;
+  padding: 5px;
+  z-index: 9999;
+
+   
+  margin: 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+  font-size: .75rem;
+  
+  font-family: "IranYekan";
+ 
+  
+}
+
+.bd-calendar {
+  /* width: 275px; */
+  padding: 0;
+  margin: 0;
+ 
+  border-radius: 7px;
+ 
+
+}
+
+.bd-calendar table {
+  border: none;
+  
+
+   
+}
+
+.bd-title {
+  width: 210px;
+  padding: 0;
+  margin: 0;
+}
+
+.bd-dropdown {
+  display: inline-block;
+  float: right;
+  width: 75px;
+}
+
+.bd-dropdown select {
+  width: 100%;
+  font-size: 12px;
+}
+
+.bd-dropdown select,
+.bd-next,
+.bd-prev {
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  font-size: .85rem;
+}
+
+.bd-next,
+.bd-prev {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-color: transparent;
+  width: 22px;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  float: right;
+  font-size: .85rem;
+  border-radius: 12px;
+}
+
+.bd-table thead {
+  background-color: transparent;
+  color: #141414;
+  
+  
+  
+}
+
+.bd-table thead tr {
+  height: 30px;
+  cursor: context-menu;
+    
+}
+
+.bd-table thead tr th {
+  text-align: center;
+font-size: 14px;
+  border-radius: 12px;
+  background-color: white;
+}
+
+.bd-table tbody tr td {
+  border: none;
+}
+
+.bd-empty-cell,
+.bd-table-days button {
+  width: 30px;
+  height: 30px;
+  font-size: 12px;
+ 
+}
+
+.bd-table-days button {
+  background-color: white;
+  border: 0;
+  border-radius: 7px;
+}
+
+.bd-table-days button:hover:enabled {
+  color: #fff;
+  font-weight: 200;
+  background-color: rgba(59, 244, 13, 0.955);
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 400;
+
+}
+
+
