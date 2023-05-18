@@ -48,7 +48,7 @@
                 </li>
                 <li class="nav_item">
 
-                    <i class="uil uil-moon change-theme uil-sun" id="theme-button"></i>
+                    <i class="uil uil-moon change-theme uil-sun"  id="theme-button"></i>
 
                 </li>
 
@@ -61,11 +61,21 @@
         </nav>
     </header>
 
+<script>
+   
 
+
+function preventPageRefresh(event) {
+      event.preventDefault(); // جلوگیری از رفرش کردن صفحه
+}
+</script>
+ 
+    
+
+    
+    <script src="assets/js/index.js"></script>
 
 </body>
 
-
-<script src="assets/js/index.js"></script>
 
 </html>

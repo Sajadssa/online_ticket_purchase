@@ -57,11 +57,8 @@ body {
 
   outline-style: none;
 
-   
-
   font-family: "IranYekan", sans-serif;
 
-   
   background-color: var(--bodyColor);
   color: var(--text-color);
   --duration: 3s;
@@ -470,7 +467,7 @@ input[type="email"]:focus {
 }
 /* tables */
 
-/* table {
+table {
   width: 65%;
   z-index: 1;
   border-collapse: collapse;
@@ -478,9 +475,8 @@ input[type="email"]:focus {
   margin: 0 auto;
   padding: 1rem;
   font-size: 13px;
-} */
-
-/* table,
+}
+*/ table,
 th,
 td,
 tr,
@@ -496,7 +492,7 @@ th {
 
 td {
   padding: 0 0.2rem;
-} */
+}
 
 /* user panel */
 #userpanel {
@@ -615,132 +611,69 @@ td {
   border-radius: 5px;
 }
 
-/* استایل فرم زرین پال */
-
-/* .containers {
-  margin: 50px auto;
-  max-width: 500px;
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  margin-top: 10px;
-  font-size: 18px;
-}
-
-input[type="text"],
-input[type="radio"] {
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  font-size: 16px;
-}
-
-input[type="submit"] {
-  background-color: #4caf50;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
-
-input[type="submit"]:hover {
-  background-color: #3e8e41;
-}
-
-input[type="radio"]:hover {
-  background-color: #f9f9f9;
-}
-
-input[type="radio"]:checked {
-  background-color: #4caf50;
-  color: white;
-}
-
-input[type="radio"]:focus {
-  outline: 2px solid #4caf50;
-} */
-
 /* buy ticket */
 .container {
- display: flex;
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 1.2rem;
-  margin: 70px auto 0;
- max-width:100%;
- 
+  margin: 35px auto 0;
+  max-width: 1268px;
+
   border: 1px solid var(--first-color-second);
   padding: 50px;
   border-radius: 12px;
   background-color: var(--bodyColor);
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  font-size: 0.85rem;
-   
- 
+  box-shadow: 0px 0px 10px var(--primaryColor);
+  font-size: 0.99rem;
 }
-.container .formbuy{
-margin: 0 15px 0 0 ;
-  font-size: 0.85rem;
+.container .formbuy {
+  margin: 0 15px 0 0;
+  font-size: 1rem;
   /* background-color: var(--body-color); */
-display: flex;
+  display: flex;
   flex-direction: row;
- justify-content: space-evenly;
- align-items: center;
- width: 100%;
- 
- 
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
 }
-
 
 label {
   display: block;
   margin-right: 10px;
   font-weight: bold;
   color: var(--input-color);
-  font-size: 0.75rem;
-  
+  font-size: 0.85rem;
 }
 
 .formbuy input[type="text"],
 select#source,
 select#destin,
 select#type {
-  width:auto;
-  padding:10px 0;
- border: 1px solid #ccc;
+  width: auto;
+  padding: 10px 0;
+  border: 1px solid #ccc;
   border-radius: 7px;
-   font-size: 0.85rem;
+  font-size: 0.9rem;
   margin: 5px;
-   text-align: center;
+  text-align: center;
   outline-style: none;
- 
+
   background: var(--secondaryColor);
   border: 1px solid var(--border-color);
 
   color: var(--input-color);
 }
 
-
-
-input[type="number"]{
-   width:80px;
+input[type="number"] {
+  width: 80px;
   padding: 10px;
   border: 1px solid var(--border-color);
   border-radius: 7px;
-   font-size: 0.85rem;
+  font-size: 0.85rem;
   margin: 5px;
-   
+
   outline-style: none;
   box-shadow: 0 10px 120px rgba(209, 186, 186, 0.959);
   background: var(--secondaryColor);
@@ -750,18 +683,87 @@ input[type="number"]{
 }
 
 input[type="submit"] {
-  
-   margin: 0 auto;
+  margin: 0 auto;
   background-color: var(--primaryColor);
   color: white;
   padding: 10px 20px;
   border: none;
- border-radius: 7px;
+  border-radius: 7px;
   cursor: pointer;
   font-size: 0.85rem;
 }
+/* search table */
+div .table_search {
+  width: 1268px;
+  border-collapse: collapse;
+  margin-top: 20px;
+  color: var(--title-color);
+}
 
- 
+.table_search th,
+.table_search td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid transparent;
+}
 
+.table_search th {
+  background-color: var(--secondaryColor);
+}
 
+/* charge page zarinpalapi.php */
 
+/* استایل فرم زرین پال */
+
+.containers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 70px auto 0;
+  max-width: 500px;
+
+  border: 1px solid var(--first-color-second);
+  padding: 50px;
+  border-radius: 12px;
+  background-color: var(--bodyColor);
+  box-shadow: 0px 0px 10px var(--primaryColor);
+  font-size: 0.99rem;
+}
+
+form .charge {
+  margin: 0 15px 0 0;
+  font-size: 1rem;
+  /* background-color: var(--body-color); */
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  width: 100%;
+}
+
+.charge input[type="number"],
+.charge input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 7px;
+  font-size: 0.85rem;
+  margin: 5px;
+
+  outline-style: none;
+  box-shadow: 0 10px 120px rgba(209, 186, 186, 0.959);
+  background: var(--secondaryColor);
+  border: 1px solid var(--border-color);
+
+  color: var(--input-color);
+}
+
+.charge input[type="submit"] {
+  background-color: var(--primaryColor);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin-top: 10px;
+}
