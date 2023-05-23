@@ -618,9 +618,9 @@ td {
   justify-content: center;
   align-items: center;
   gap: 1.2rem;
-  margin: 35px auto 0;
+  margin: 30px auto 0;
   max-width: 1268px;
-
+height: 150px;
   border: 1px solid var(--first-color-second);
   padding: 50px;
   border-radius: 12px;
@@ -716,6 +716,7 @@ div .table_search {
 /* استایل فرم زرین پال */
 
 .containers {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;

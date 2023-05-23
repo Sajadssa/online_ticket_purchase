@@ -61,12 +61,16 @@
   display: inline-block;
   float: right;
   width: 75px;
+  font-size: 11px;
+  height: min-content;
 }
 
 .bd-dropdown select {
   width: 100%;
-  font-size: 12px;
+  font-size: 11px;
 }
+
+
 
 .bd-dropdown select,
 .bd-next,
