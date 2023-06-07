@@ -158,7 +158,7 @@ $(document).ready(function() {
         </form>
     </div>
 <?php
-
+// کلیک باتن چستجو توسط کاربر
 if (isset($_POST['buyticket'])) {
     $source = $_POST['source'];
     $destin = $_POST['destin'];
@@ -187,35 +187,48 @@ if (isset($_POST['buyticket'])) {
     }
 
     $result = mysqli_query($con, $query);
+   
 
-    if (mysqli_num_rows($result) > 0 ) {
-        echo "<div  style='margin:20px 50px; color:lightgreen'> نتایج جستجو</div>";
+    if (mysqli_num_rows($result) > 0  ) {
+     
+       
 
-        echo "<table class='table_search' style=' width:1268px;
+           
+            $count = 1;
+            while ($row = mysqli_fetch_assoc($result)) {
+
+         
+            $available_tickets = $row['available_tickets'];
+            // echo $available_tickets;
+
+                if($available_tickets>0){
+                echo "<div  style='margin:20px 50px; color:lightgreen'> نتایج جستجو</div>";
+
+                echo "<table class='table_search' style=' width:1268px;
         border-collapse: collapse;
         margin-top: 20px;
         color: var(--title-color);' >";
-        echo "<thead>";
-        echo "<tr>";
-        echo "<th style=' padding: 10px;
+                echo "<thead>";
+                echo "<tr>";
+                echo "<th style=' padding: 10px;
         text-align: center;
         border: 1px solid transparent;' >ثبت خرید</th>";
-        echo "<th>ردیف</th>";
-        echo "<th>مبدا</th>";
-        echo "<th>مقصد</th>";
-        echo "<th>تاریخ رفت</th>";
-        echo "<th>تاریخ برگشت</th>";
-        echo "<th>قیمت</th>";
-        echo "<th>توضیحات</th>";
-        echo "<th>نوع سفر</th>";
-        echo "</tr>";
-        echo "</thead>";
-        echo "<tbody>";
- $count = 1;
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "<tr>";
-         echo "<td>";
-echo "<form method='POST' action=''>
+                echo "<th>ردیف</th>";
+                echo "<th>مبدا</th>";
+                echo "<th>مقصد</th>";
+                echo "<th>تاریخ رفت</th>";
+                echo "<th>تاریخ برگشت</th>";
+                echo "<th>قیمت</th>";
+                echo "<th>توضیحات</th>";
+                echo "<th>نوع سفر</th>";
+                echo "</tr>";
+                echo "</thead>";
+                echo "<tbody>";
+                
+                
+                echo "<tr>";
+                echo "<td>";
+                echo "<form method='POST' action=''>
       <input type='hidden' name='source' value='" . $source . "'>
       <input type='hidden' name='destin' value='" . $destin . "'>
       <input type='hidden' name='depart_date' value='" . $depart_date . "'>
@@ -236,39 +249,70 @@ echo "<form method='POST' action=''>
       name='purchase'
       value='ثبت خرید'>
    </form>";
-         
-echo "</td>";
 
-            echo "</td>";
-            echo "<td>" . $count . "</td>";
-            echo "<td>" . $row['source_city'] . "</td>";
-            echo "<td>" . $row['destination_city'] . "</td>";
-            echo "<td>" . $row['depart_date'] . "</td>";
-            echo "<td>" . $row['return_date'] . "</td>";
-            echo "<td>" . $row['price'] . " تومان</td>";
-            echo "<td>" . $row['Description'] . "</td>";
-            echo "<td>";
-            if ($row['is_round_trip'] == 0) {
-                echo "یک طرفه";
-            } elseif ($row['is_round_trip'] == 1) {
-                echo "رفت و برگشت";
-            } else {
-                echo "نامشخص";
+                echo "</td>";
+
+                echo "</td>";
+                echo "<td>" . $count . "</td>";
+                echo "<td>" . $row['source_city'] . "</td>";
+                echo "<td>" . $row['destination_city'] . "</td>";
+                echo "<td>" . $row['depart_date'] . "</td>";
+                echo "<td>" . $row['return_date'] . "</td>";
+                echo "<td>" . $row['price'] . " تومان</td>";
+                echo "<td>" . $row['Description'] . "</td>";
+                echo "<td>";
+                if ($row['is_round_trip'] == 0) {
+                    echo "یک طرفه";
+                } elseif ($row['is_round_trip'] == 1) {
+                    echo "رفت و برگشت";
+                } else {
+                    echo "نامشخص";
+                }
+                echo "</td>";
+                echo "</tr>";
+
+                $count++;
+                echo "</tbody>";
+                echo "</table>";
+
+
+
+
+
+
+
+
+                }
+                
+                else {
+           /*      $update_available_tickets = "UPDATE train_lines SET available_tickets = 0";
+                $result_update_tickets = mysqli_query($con, $update_available_tickets); */
+                    echo "<div  style='margin:20px 50px; color:tomato'> ظرفیت این سرویس تکمیل است لطفاً سرویس دیگری را انتخاب کنید    .</div>";
+
+                }
+
+
+               
+
             }
-            echo "</td>";
-            echo "</tr>";
 
-            $count++;
-        }
 
-        echo "</tbody>";
-        echo "</table>";
-    } else {
-        echo "<div  style='margin:20px 50px; color:tomato'>بلیطی برای این مشخصات یافت نشد.</div>";
+        
+
     }
-} else {
+    
+    else{
+        echo "<div  style='margin:20px 50px; color:tomato'>بلیطی برای این مشخصات یافت نشد.</div>";
+
+    }
+   
+} 
+
+// اگر کاربر باتن رو کلیک نکرده بود
+else {
     echo "<div style='margin:20px 50px; color:tomato'>لطفاً فرم را پر کنید و برای جستجو ارسال کنید.</div>";
 }
+
 ?>
 
 <!-- عمل ثبت بلیط در جدول خرید بلیط -->
@@ -278,17 +322,16 @@ $user_data = check_login($con);
 if(!$user_data){
 
    header("Location:Login.php"); 
-}
-else{
+} else {
 
-$user_data = check_login($con);
-$user_id=$user_data['id'];
+    $user_data = check_login($con);
+    $user_id = $user_data['id'];
 
-// echo $user_id;
+    // echo $user_id;
 
- if (isset($_POST['purchase'])) {
-    // دریافت مسیر یافت شده
-   
+    if (isset($_POST['purchase'])) {
+        // دریافت مسیر یافت شده
+
         $source = $_POST['source'];
         $destin = $_POST['destin'];
         $depart_date = $_POST['depart_date'];
@@ -311,22 +354,17 @@ $user_id=$user_data['id'];
             $idTL = $row['idTL'];
             $price = $row['price'];
             $available_tickets = $row['available_tickets'];
- $total_price = $price * $passengers;
-
- 
-
-            
+         /*    echo $available_tickets; */
+            $total_price = $price * $passengers;
 
 
-                 
-}
-else {
-    $error = mysqli_error($con);
-    if (strpos($error, 'Duplicate entry') !== false) {
-        echo '<div class="error-message">خطا: رکورد تکراری وجود دارد.</div>';
-    } else {
-        echo '<div class="error-message">خطا در انجام عملیات.</div>';
-    }
+        } else {
+            $error = mysqli_error($con);
+            if (strpos($error, 'Duplicate entry') !== false) {
+                echo '<div class="error-message">خطا: رکورد تکراری وجود دارد.</div>';
+            } else {
+                echo '<div class="error-message">خطا در انجام عملیات.</div>';
+            }
 
         }
 
@@ -335,103 +373,178 @@ else {
 
         $user_id = $user_data['id'];
 
-        if ($available_tickets > 0 ) {
-
-            
-            $query_wallet = "SELECT amount FROM wallet WHERE id = '$user_id'";
-            $result_wallet = mysqli_query($con, $query_wallet);
-
-            if (mysqli_num_rows($result_wallet) > 0) {
-                $row_wallet = mysqli_fetch_assoc($result_wallet);
-                $amount = $row_wallet['amount'];
-                // echo $amount;
-                //  echo $total_price;
-if(isset($amount) >= $total_price){
 
 
-                    // ثبت خرید بلیط در جدول purchase
-                    $purchase_date = date('Y-m-d');
-                    $tracking_number = mt_rand(10000, 99999);
-                    $insert_purchase = "INSERT INTO purchase(id, idTL, passengers, total_price, tracking_id, purchase_date)
-                                        VALUES ('$user_id', '$idTL', '$passengers', '$total_price', '$tracking_number', '$purchase_date')";
-                    mysqli_query($con, $insert_purchase);
-
-                    // آپدیت موجودی کیف پول کاربر
-                    $new_amount = $amount - $total_price;
-                    $update_wallet = "UPDATE wallet SET Amount = '$new_amount' WHERE id = '$user_id'";
-                    mysqli_query($con, $update_wallet);
-
-                    // آپدیت transactionAmount در جدول transaction
-                    $purchase_date = date('Y-m-d');
-                    $insert_transaction = "INSERT INTO transaction(id, transactionAmount, Remark, transaction_date)
-                                           VALUES ('$user_id', '$total_price', ' خرید بلیط  ', '$purchase_date')";
-                    mysqli_query($con, $insert_transaction);
-
-                    // آپدیت بلیط‌های در دسترس برای هر مسیر
-                    $selectPassengerCount = "SELECT idTL, SUM(passengers) AS total_passengers FROM purchase WHERE idTL = '$idTL' GROUP BY idTL";
-                    $resultPassengerCount = mysqli_query($con, $selectPassengerCount);
-
-                    if (mysqli_num_rows($resultPassengerCount) > 0) {
-                        $rowPassengerCount = mysqli_fetch_assoc($resultPassengerCount);
-                        $idTL = $rowPassengerCount['idTL'];
-                        $passengerCount = $rowPassengerCount['total_passengers'];
-
-                        $update_available_tickets = "UPDATE train_lines SET available_tickets = available_tickets - $passengerCount WHERE idTL = '$idTL'";
-                        mysqli_query($con, $update_available_tickets);
-                    }
+        $query_wallet = "SELECT amount FROM wallet WHERE id = '$user_id'";
+        $result_wallet = mysqli_query($con, $query_wallet);
 
 
-                    // حذف رکوردهای جدول tempororys
-                    $deleteTemporary = "DELETE FROM tempororys";
-                    mysqli_query($con, $deleteTemporary);
-
-
-
-                    echo '<div style="color: green; margin-right:50px">عملیات خرید با موفقیت انجام شد.</div>';
-
-
-                }
-
-else{
-
+        $row_wallet = mysqli_fetch_assoc($result_wallet);
+        $amount = $row_wallet['amount'];
   
-      // Insert data into Temporory table
+        // موجودی است و باید بررسی شود
+        if (mysqli_num_rows($result_wallet) > 0) {
+
+
+            if($amount< $total_price){
+                // Insert data into Temporory table
                 $query = "INSERT INTO Tempororys (id, idTL, passengers, total_price,available_tickets) VALUES ('$user_id', '$idTL', '$passengers', '$total_price','$available_tickets')";
                 mysqli_query($con, $query);
 
                 // موجودی کافی نیست. نمایش پیغام خطا به صورت alert
-        echo '<script>alert("موجودی کافی نیست. لطفاً موجودی کیف پول خود را آپدیت کنید.");</script>';
-        // انتقال کاربر به صفحه zarinpalapi.php
-            echo '<script>window.location.href = "zarinpalapi.php";</script>';
+                echo '<script>alert("موجودی کافی نیست. لطفاً موجودی کیف پول خود را آپدیت کنید.");</script>';
+                // انتقال کاربر به صفحه zarinpalapi.php
+                echo '<script>window.location.href = "zarinpalapi.php";</script>';
 
 
+
+
+            }
+            // بررسی موجودی با قیمت کل
+
+            if ($amount>0 && $amount >= $total_price) {
+
+             
+
+                // ثبت خرید بلیط در جدول purchase
+                $purchase_date = date('Y-m-d');
+                $tracking_number = mt_rand(10000, 99999);
+                $insert_purchase = "INSERT INTO purchase(id, idTL, passengers, total_price, tracking_id, purchase_date)
+                                        VALUES ('$user_id', '$idTL', '$passengers', '$total_price', '$tracking_number', '$purchase_date')";
+                mysqli_query($con, $insert_purchase);
+
+                // آپدیت موجودی کیف پول کاربر
+                $new_amount = $amount - $total_price;
+                $update_wallet = "UPDATE wallet SET Amount = '$new_amount' WHERE id = '$user_id'";
+                mysqli_query($con, $update_wallet);
+
+                // آپدیت transactionAmount در جدول transaction
+                $purchase_date = date('Y-m-d');
+                $transaction_id = str_pad(rand(0, pow(10, 7) - 1), 10, '0', STR_PAD_LEFT);
+                $insert_transaction = "INSERT INTO transaction(id, transactionAmount, Remark, transaction_date,transaction_id)
+                                           VALUES ('$user_id', '$total_price', ' خرید بلیط  ', '$purchase_date','$transaction_id')";
+
+                mysqli_query($con, $insert_transaction);
+
+                // آپدیت بلیط‌های در دسترس برای هر مسیر
+                $selectPassengerCount = "SELECT idTL, SUM(passengers) AS total_passengers FROM purchase WHERE idTL = '$idTL' GROUP BY idTL";
+                $resultPassengerCount = mysqli_query($con, $selectPassengerCount);
+
+                if (mysqli_num_rows($resultPassengerCount) > 0) {
+                    $rowPassengerCount = mysqli_fetch_assoc($resultPassengerCount);
+                    $idTL = $rowPassengerCount['idTL'];
+                    $passengerCount = $rowPassengerCount['total_passengers'];
+
+                    $update_available_tickets = "UPDATE train_lines SET available_tickets = available_tickets - $passengerCount WHERE idTL = '$idTL'";
+                    mysqli_query($con, $update_available_tickets);
+                }
+
+
+                // حذف رکوردهای جدول tempororys
+                $deleteTemporary = "DELETE FROM tempororys";
+                mysqli_query($con, $deleteTemporary);
+
+
+
+                echo '<div style="color: green; margin-right:50px">عملیات خرید با موفقیت انجام شد.</div>';
+
+
+                
+// اجرای کوئری و بازیابی نتایج
+$query = "SELECT usr.username, usr.mobile, usr.national_code, usr.email, cr.Route, TL.departure_date AS depart_date, TL.arrival_date AS return_date, tl.train_name, pr.total_price, TL.Description, tl.departure_time, tl.arrival_time, pr.purchase_date, pr.passengers
+FROM city_routes CR 
+INNER JOIN source_city SC ON SC.idCTS = CR.idCTS 
+INNER JOIN destination_city DS ON DS.idCTD = CR.idCTD 
+INNER JOIN train_lines TL ON TL.idCTR = CR.idCTR 
+INNER JOIN purchase pr ON pr.idTL = TL.idTL
+INNER JOIN users usr ON usr.id = pr.id
+WHERE pr.idbt IN (SELECT MAX(idbt) FROM purchase)
+AND usr.id = 1
+GROUP BY usr.username, usr.email, usr.mobile, usr.national_code, Cr.Route, TL.departure_date, pr.purchase_date, pr.tracking_id, TL.arrival_date, pr.total_price, TL.Description, TL.is_round_trip";
+
+$result = mysqli_query($con, $query);
+
+// ایجاد جدول HTML
+$html = '<table>
+            <tr>
+                <th>نام کاربری</th>
+                <th>شماره موبایل</th>
+                <th>کد ملی</th>
+                <th>ایمیل</th>
+                <th>مسیر</th>
+                <th>تاریخ رفت</th>
+                <th>تاریخ برگشت</th>
+                <th>نام قطار</th>
+                <th>قیمت کل</th>
+                <th>توضیحات</th>
+                <th>زمان حرکت</th>
+                <th>زمان ورود</th>
+                <th>تاریخ خرید</th>
+                <th>تعداد مسافران</th>
+            </tr>';
+
+while ($row = mysqli_fetch_assoc($result)) {
+    $html .= '<tr>
+                <td>'.$row['username'].'</td>
+                <td>'.$row['mobile'].'</td>
+                <td>'.$row['national_code'].'</td>
+                <td>'.$row['email'].'</td>
+                <td>'.$row['Route'].'</td>
+                <td>'.$row['depart_date'].'</td>
+                <td>'.$row['return_date'].'</td>
+                <td>'.$row['train_name'].'</td>
+                <td>'.$row['total_price'].'</td>
+                <td>'.$row['Description'].'</td>
+                <td>'.$row['departure_time'].'</td>
+                <td>'.$row['arrival_time'].'</td>
+                <td>'.$row['purchase_date'].'</td>
+                <td>'.$row['passengers'].'</td>
+            </tr>';
 }
 
+$html .= '</table>';
+
+// ذخیره فایل HTML
+$filename = 'ticket_info.html';
+file_put_contents($filename, $html);
+
+// ایجاد لینک دانلود
+$download_link = '<a href="'.$filename.'" download  style="margin-right:120px;padding-top:50px;text-decoration:none"> دانلود بلیط</a>';
+
+// نمایش لینک دانلود
+echo $download_link;
 
 
 
 
 
 
-        
+
             } 
             
-  
+            
+           
 
-} else {
+        }
+        // موجودی خالی باشد
+        else {
+            // Insert data into Temporory table
+            $query = "INSERT INTO Tempororys (id, idTL, passengers, total_price,available_tickets) VALUES ('$user_id', '$idTL', '$passengers', '$total_price','$available_tickets')";
+            mysqli_query($con, $query);
 
-            echo "<div  style='margin:20px 50px; color:tomato'> ظرفیت این سرویس تکمیل است لطفاً سرویس دیگری را انتخاب کنید    .</div>";
+            // موجودی کافی نیست. نمایش پیغام خطا به صورت alert
+            echo '<script>alert("موجودی کافی نیست. لطفاً موجودی کیف پول خود را آپدیت کنید.");</script>';
+            // انتقال کاربر به صفحه zarinpalapi.php
+            echo '<script>window.location.href = "zarinpalapi.php";</script>';
 
         }
 
-
-
     }
-
 }
 
-
 ?>
+
+
 
    <script>
     var typeSelect = document.getElementById("type");
