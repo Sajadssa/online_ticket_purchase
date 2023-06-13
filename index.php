@@ -14,9 +14,15 @@ include 'NavBar.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuyTrainTicket</title>
+    <link rel="stylesheet" href="assets/images/trainPerspective.jpg">
+
      
 </head>
 <body>
+     <!-- hero  -->
+     <section class="hero">
+         
+     </section>
     
 </body>
 </html>

@@ -1,6 +1,8 @@
 
 
 <?php
+ob_start();
+
 session_start();
 include 'Server.php'; // افزودن کدهای مربوط به اتصال به دیتابیس
 include 'functions.php';
@@ -38,7 +40,7 @@ if(isset($_POST['buyticket'])) {
     
 }
 else{
-    echo '<div style=" position :absolute;margin:30px 50px; color:tomato">   خطا در اتصال سرور </div>';
+    echo '<div style=" position :absolute;margin:30px 50px; color:tomato" class="no-print">   خطا در اتصال سرور </div>';
 }
 
 ?>
@@ -57,6 +59,7 @@ else{
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.min.js"></script>
 
+
 <?php
 // در صفحه PHP خود، بررسی کنید که آیا کوکی sourceSelectizeValue مقدار دارد یا خیر
 $sourceSelectizeValue = isset($_COOKIE['sourceSelectizeValue']) ? $_COOKIE['sourceSelectizeValue'] : '';
@@ -71,8 +74,8 @@ if (!empty($sourceSelectizeValue)) {
 
 <!-- افزودن استایل ها و اسکریپت های مورد نیاز -->
 
-<select id="source" name="source" placeholder="مبدا">
-    <option value="">انتخاب کنید</option>
+<select id="source" name="source"  class="no-print" placeholder="مبدا">
+    <option  value="">انتخاب کنید</option>
     <!-- افزودن گزینه های دیگر -->
 </select>
 
@@ -108,10 +111,12 @@ $(document).ready(function() {
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    
+   <!-- #endregion -->
 </head>
 <body>
-    <div class="container">
+  
+
+    <div class="container no-print">
         <form class="formbuy" method="post" action="#">
             <label for="type">نوع سفر:</label>
             <select id="type" name="type" required>
@@ -310,7 +315,7 @@ if (isset($_POST['buyticket'])) {
 
 // اگر کاربر باتن رو کلیک نکرده بود
 else {
-    echo "<div style='margin:20px 50px; color:tomato'>لطفاً فرم را پر کنید و برای جستجو ارسال کنید.</div>";
+    echo "<div style='margin:20px 50px; color:tomato'class='no-print' >لطفاً فرم را پر کنید و برای جستجو ارسال کنید.</div>";
 }
 
 ?>
@@ -444,81 +449,10 @@ if(!$user_data){
                 $deleteTemporary = "DELETE FROM tempororys";
                 mysqli_query($con, $deleteTemporary);
 
+                // echo '<div style="color: green; margin-right:50px" class="no-print">عملیات خرید با موفقیت انجام شد.</div>';
 
-
-                echo '<div style="color: green; margin-right:50px">عملیات خرید با موفقیت انجام شد.</div>';
-
-
-                
-// اجرای کوئری و بازیابی نتایج
-$query = "SELECT usr.username, usr.mobile, usr.national_code, usr.email, cr.Route, TL.departure_date AS depart_date, TL.arrival_date AS return_date, tl.train_name, pr.total_price, TL.Description, tl.departure_time, tl.arrival_time, pr.purchase_date, pr.passengers
-FROM city_routes CR 
-INNER JOIN source_city SC ON SC.idCTS = CR.idCTS 
-INNER JOIN destination_city DS ON DS.idCTD = CR.idCTD 
-INNER JOIN train_lines TL ON TL.idCTR = CR.idCTR 
-INNER JOIN purchase pr ON pr.idTL = TL.idTL
-INNER JOIN users usr ON usr.id = pr.id
-WHERE pr.idbt IN (SELECT MAX(idbt) FROM purchase)
-AND usr.id = 1
-GROUP BY usr.username, usr.email, usr.mobile, usr.national_code, Cr.Route, TL.departure_date, pr.purchase_date, pr.tracking_id, TL.arrival_date, pr.total_price, TL.Description, TL.is_round_trip";
-
-$result = mysqli_query($con, $query);
-
-// ایجاد جدول HTML
-$html = '<table>
-            <tr>
-                <th>نام کاربری</th>
-                <th>شماره موبایل</th>
-                <th>کد ملی</th>
-                <th>ایمیل</th>
-                <th>مسیر</th>
-                <th>تاریخ رفت</th>
-                <th>تاریخ برگشت</th>
-                <th>نام قطار</th>
-                <th>قیمت کل</th>
-                <th>توضیحات</th>
-                <th>زمان حرکت</th>
-                <th>زمان ورود</th>
-                <th>تاریخ خرید</th>
-                <th>تعداد مسافران</th>
-            </tr>';
-
-while ($row = mysqli_fetch_assoc($result)) {
-    $html .= '<tr>
-                <td>'.$row['username'].'</td>
-                <td>'.$row['mobile'].'</td>
-                <td>'.$row['national_code'].'</td>
-                <td>'.$row['email'].'</td>
-                <td>'.$row['Route'].'</td>
-                <td>'.$row['depart_date'].'</td>
-                <td>'.$row['return_date'].'</td>
-                <td>'.$row['train_name'].'</td>
-                <td>'.$row['total_price'].'</td>
-                <td>'.$row['Description'].'</td>
-                <td>'.$row['departure_time'].'</td>
-                <td>'.$row['arrival_time'].'</td>
-                <td>'.$row['purchase_date'].'</td>
-                <td>'.$row['passengers'].'</td>
-            </tr>';
-}
-
-$html .= '</table>';
-
-// ذخیره فایل HTML
-$filename = 'ticket_info.html';
-file_put_contents($filename, $html);
-
-// ایجاد لینک دانلود
-$download_link = '<a href="'.$filename.'" download  style="margin-right:120px;padding-top:50px;text-decoration:none"> دانلود بلیط</a>';
-
-// نمایش لینک دانلود
-echo $download_link;
-
-
-
-
-
-
+                // رفتن به صفحه ticket_info
+                header("location:ticket_info.php");
 
             } 
             
@@ -541,7 +475,7 @@ echo $download_link;
 
     }
 }
-
+ob_end_flush();
 ?>
 
 
@@ -583,6 +517,12 @@ function preventPageRefresh(event) {
       event.preventDefault(); // جلوگیری از رفرش کردن صفحه
 }
 
+
+
 </script>
+
+
+
+
 </body>
 </html>

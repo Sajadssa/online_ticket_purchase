@@ -18,7 +18,7 @@
 <body>
     <!-- header.header>nav.nav_container>ul.nav_link>li.nav_item*5>a -->
     <header>
-        <nav class="nav_container">
+        <nav class="nav_container no-print">
 
             <!-- <div class=" toggler">
                 <div class="bar bar-one"></div>

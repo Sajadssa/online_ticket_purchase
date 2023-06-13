@@ -1,4 +1,5 @@
 <?php
+ob_start();
 // Start the session to retrieve the logged-in user's ID
 session_start();
 require_once 'functions.php';
@@ -111,10 +112,11 @@ if (isset($_POST['submit'])) {
                     mysqli_query($con, $deleteTemporary);
 
                     echo '<div style="color: green; margin-right:50px">عملیات خرید با موفقیت انجام شد.</div>';
-
-                    // انتقال به صفحه trainticket.php
-                    header('Location: trainticket.php');
+             
+                    // انتقال به صفحه trainticket.php همراه با ارسال پارامترهای مربوطه
+                    header('Location: ticket_info.php');
                     exit;
+                    
 }
 
           else {
@@ -193,12 +195,10 @@ if (isset($_POST['submit'])) {
                         $deleteTemporary = "DELETE FROM tempororys";
                         mysqli_query($con, $deleteTemporary);
 
-                    echo '<div style="color: green; margin-right:50px">عملیات خرید با موفقیت انجام شد.</div>';
-
-                    // انتقال به صفحه trainticket.php
-                        header('Location: trainticket.php');
-                        exit;
-
+                   
+                        // echo '<div style="color: green; margin-right:50px">عملیات خرید با موفقیت انجام شد.</div>';
+                    // رفتن به صفحه ticket_info
+                    header("location:ticket_info.php");
 
                 }
                 else{
@@ -225,11 +225,12 @@ $row = mysqli_fetch_assoc($result);
 $wallet_amount = $row['amount'] ?? 0;
 $wallet_remark = $row['remark'] ?? '';
 $new_amount = isset($_POST['amount']) ? $_POST['amount'] : $wallet_amount;
- 
- 
+
+ob_end_flush();
 ?>
 
-  
+
+ 
 
 
 <script>
@@ -258,6 +259,10 @@ $new_amount = isset($_POST['amount']) ? $_POST['amount'] : $wallet_amount;
 
 
 
+
+
 </div>
+
+
 
 <p><?php echo $message ?? ''; ?></p>

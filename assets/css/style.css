@@ -65,6 +65,7 @@ body {
   --timing: ease;
   transition: color var(--duration) var(--timing),
     background-color var(--duration) var(--timing);
+ 
 }
 /* منوی پیمایش */
 
@@ -770,31 +771,87 @@ form .charge {
 }
 
 .ticket-table {
-  width: 100%;
+  width: 1268px;
   border-collapse: collapse;
   color: var(--primaryColor);
+ margin-top: 20px;
+
+ 
+ 
+  border: none;
 }
 
 .ticket-table th,
 .ticket-table td {
   border: 1px solid #ddd;
   padding: 8px;
-  color:var(--input-color);
+  color:var(--mainBlack);
+  background-color: var(--body-color);
+  font-size: 12px;
+   
+ 
+  background-color: var(--bodyColor);
+
 }
 
 .ticket-table th {
-  background-color: #f2f2f2;
+  background-color:var(--mainGrey);
   text-align: center;
+   background-color: var(--body-color);
+   
 }
 
 .ticket-table tr:nth-child(even) {
-  background-color: #f9f9f9;
+ background-color: var(--mainWhite);
 }
 
-.ticket-table tr:hover {
-  background-color: #f5f5f5;
-}
+
 
 .ticket-table td {
   text-align: center;
 }
+.ticket-table td a{
+  color:green;
+  text-decoration: none;
+}
+
+
+/* logo in print ticket */
+.print{
+  display: none;
+}
+
+/* عدم نمایش navbar */
+@media print {
+  .no-print {
+    display: none;
+  }
+  .print{
+    display: block;
+  }
+}
+/*  hero banner*/
+/* Background styles */
+.hero{
+ width: 100vw;
+  height: 100vh;
+
+  /* Flexbox stuff */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+   background-image: linear-gradient(
+      rgba(42, 45, 110, 0.4),
+      rgba(11, 8, 120, 0.5),
+      rgba(45, 12, 111, 0.3)
+    ),
+    url("/assets/images/trainPerspective.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+}
+ 
