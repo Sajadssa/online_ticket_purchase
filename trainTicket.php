@@ -208,8 +208,8 @@ if (isset($_POST['buyticket'])) {
 
                 if($available_tickets>0){
                 echo "<div  style='margin:20px 50px; color:lightgreen'> نتایج جستجو</div>";
-
-                echo "<table class='table_search' style=' width:1268px;
+                echo "<div class='container'>
+         <table class='table_search' style=' width:1268px;
         border-collapse: collapse;
         margin-top: 20px;
         color: var(--title-color);' >";
@@ -281,6 +281,9 @@ if (isset($_POST['buyticket'])) {
                 echo "</table>";
 
 
+
+"</div>";
+               
 
 
 

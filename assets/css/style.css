@@ -65,6 +65,17 @@ body {
   --timing: ease;
   transition: color var(--duration) var(--timing),
     background-color var(--duration) var(--timing);
+    width: 100vw;
+ 
+    /* Background styles */
+  background-image:
+ url("/online_ticket_purchase/assets/images/Ept_Banner.jpg");
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+ 
  
 }
 /* منوی پیمایش */
@@ -188,11 +199,12 @@ ul.nav_link li.nav_item a:hover {
 }
 
 /* hero */
-/* blurring the image */
+ 
+
 .hero {
   /* Sizing */
   width: 100vw;
-  height: 100vh;
+  height:80vh;
 
   /* Flexbox stuff */
   display: flex;
@@ -202,17 +214,23 @@ ul.nav_link li.nav_item a:hover {
   /* Text styles */
   text-align: center;
   color: white;
+  /* ADD THIS LINE */
+
+  /* Background styles */
+  background-image: linear-gradient(
+      rgba(42, 45, 110, 0.4),
+      rgba(11, 8, 120, 0.5),
+      rgba(45, 12, 111, 0.3)
+    ),
+ url("/online_ticket_purchase/assets/images/Ept_Banner.jpg");
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index:1;
 }
-
-.hero h1 {
-  /* Text styles */
-  font-size: 1.5em;
-
-  /* Margins */
-  margin-top: 3.5rem;
-  margin-bottom: 0.5em;
-}
-
+ 
 /* استایل به فرم ورود */
 .log_title {
   color: var(--title-color);
@@ -228,17 +246,15 @@ ul.nav_link li.nav_item a:hover {
   max-width: 50%;
   height: auto;
   margin: 10% auto;
-  box-shadow: 0 3px 3px rgba(209, 186, 186, 0.959);
-  background: var(--mainWhite);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
+ background: rgba( 55, 112, 189, 0.1 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 2.5px );
+-webkit-backdrop-filter: blur( 2.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
   z-index: 0;
   gap: 1rem;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
-  backdrop-filter: blur(11.5px);
-  -webkit-backdrop-filter: blur(12.5px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+   
 }
 
 .log_form_Container form input {
@@ -381,11 +397,12 @@ input[type="email"]:focus {
 
   border-radius: 12px;
   margin: 10% auto;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
-  backdrop-filter: blur(11.5px);
-  -webkit-backdrop-filter: blur(12.5px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba( 55, 112, 189, 0.1 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 2.5px );
+-webkit-backdrop-filter: blur( 2.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 .reg_form_Container form input {
@@ -624,9 +641,12 @@ td {
 height: 150px;
   border: 1px solid var(--first-color-second);
   padding: 50px;
-  border-radius: 12px;
-  background-color: var(--bodyColor);
-  box-shadow: 0px 0px 10px var(--primaryColor);
+ background: rgba( 55, 112, 189, 0.1 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 2.5px );
+-webkit-backdrop-filter: blur( 2.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
   font-size: 0.99rem;
 }
 .container .formbuy {
@@ -699,6 +719,7 @@ div .table_search {
   border-collapse: collapse;
   margin-top: 20px;
   color: var(--title-color);
+  
 }
 
 .table_search th,
@@ -706,6 +727,8 @@ div .table_search {
   padding: 10px;
   text-align: center;
   border: 1px solid transparent;
+  color:var(--input-color);
+  
 }
 
 .table_search th {
@@ -830,28 +853,3 @@ form .charge {
     display: block;
   }
 }
-/*  hero banner*/
-/* Background styles */
-.hero{
- width: 100vw;
-  height: 100vh;
-
-  /* Flexbox stuff */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-
-   background-image: linear-gradient(
-      rgba(42, 45, 110, 0.4),
-      rgba(11, 8, 120, 0.5),
-      rgba(45, 12, 111, 0.3)
-    ),
-    url("/assets/images/trainPerspective.jpg");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-
-}
- 

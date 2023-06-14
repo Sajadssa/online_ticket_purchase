@@ -25,7 +25,7 @@ $result = mysqli_query($con, $query);
 
 $html = '
 <!DOCTYPE html>
-<html >
+<html lang="fa" dir="rtl" >
 
 <head>
     <meta charset="UTF-8">
@@ -48,7 +48,7 @@ $html = '<table class="ticket-table">
                 <div class="print">
                 
                 <h1 style="margin:0 auto;text-align:center">فرم خرید بلیط قطار</h1>
-                    <h2 style="margin:0 auto;text-align:center">شرکت TRAIN TICKET سفر خوبی برای شما آرزو می کند.</h2>
+                    <h2  >شرکت TRAIN TICKET سفر خوبی برای شما آرزو می کند.</h2>
                 </div>
             </tr>
         <tr>
@@ -143,7 +143,13 @@ font-family: "IranYekan";
   text-decoration: none;
 }
 
-
+h1,h2{
+  margin:0 auto;
+  text-align:center; 
+  direction:rtl;
+  font-family: "IranYekan";
+  font-size: 20px;
+}
 
 
 /* logo in print ticket */
