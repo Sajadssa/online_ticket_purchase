@@ -15,43 +15,54 @@
 :root {
   /* Change favorite color */
   --hue-color: 270;
-  --primaryColor: #6d28d9;
-  --secondaryColor: #f9e6f9;
+  --primaryColor: rgba(18,189,25,.65);
+  --secondaryColor: rgba(255,255,255,0.099);
   --mainWhite: #fff;
-  --mainBlack: #222;
-  --mainGrey: #7c7c7c;
-  --mainRed: #db2777;
+  --mainBlack: rgba(0,0,0,.3);
+  --mainGrey: rgba(110,110,110,.6);
+  --mainRed: rgba(200,12,55,.3);
   --mainSpacing: 0.1rem;
   --mainTransition: all 0.3s linear;
-  --first-color-second: #a8a8c7;
-  --body-color: rgba(115, 113, 113, 0.15);
+  --first-color-second:rgba(255,255,255,.3);
+  --body-color: rgba(255, 255, 255, 0.3);
   --text-color: hsl(var(--hue-color), 8%, 75%);
   --input-color: #000;
-  --title-color: hsl(var(--hue-color), 8%, 15%);
-  --border-color: hsl(var(--hue-color), 150%, 100%);
+  --title-color: hsl(var(--hue-color), 8%, 150%);
+  --border-color:rgba(255,255,255,.5);
+  
+
 }
 
 /*========== Variables Dark theme ==========*/
 
 body.dark-theme {
-  --primaryColor: rgba(5, 0, 0, 0.879);
-  --secondaryColor: #061a32;
-  --mainWhite: #111927;
-  --mainBlack: #fff;
-  --mainGrey: #7c7c7c;
-  --mainRed: #db2777;
+  --primaryColor: rgba(5, 0, 25, 0.879);
+  --secondaryColor: rgba(4,2,8,.5);
+  --mainWhite: rgba( 55, 112, 189, 0.1 );
+  --mainBlack: rgba(255,255,200,.45);
+  --mainGrey: rgba(255,205,255,.3);
+  --mainRed: rgba(190,0,0,.6);
   --mainSpacing: 0.1rem;
   --mainTransition: all 0.3s linear;
-  --first-color-second: #061a32;
-  --bodyColor: #111927;
+  --first-color-second:rgba(20,45,89,.2);
+  --bodyColor: rgba( 55, 112, 189, 0.1 );
   --text-color: hsl(var(--hue-color), 8%, 75%);
   --input-color: #e3e4e5;
   --title-color: hsl(var(--hue-color), 8%, 95%);
-  --border-color: hsl(var(--hue-color), 55%, 25%);
+  --border-color:rgba(25,255,255,.1);
+   /* Background styles */
+  background-image:
+   
+  url("/online_ticket_purchase/assets/images/Ept_Banner_night.jpg") ; 
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+ 
+ 
 }
 
 /* دادن استایل به بدنه سایت */
-html,
+ 
 body {
   box-sizing: border-box;
 
@@ -64,29 +75,31 @@ body {
   --duration: 3s;
   --timing: ease;
   transition: color var(--duration) var(--timing),
-    background-color var(--duration) var(--timing);
+    background-image var(--duration) var(--timing);
     width: 100vw;
  
     /* Background styles */
   background-image:
- url("/online_ticket_purchase/assets/images/Ept_Banner.jpg");
-
+   
+  url("/online_ticket_purchase/assets/images/Ept_Banner.jpg") ; 
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-
  
  
 }
+
 /* منوی پیمایش */
 
 .nav_container {
   width: 100%;
   height: 60px;
-  box-shadow: 0 1px 1px rgba(209, 186, 186, 0.959);
-  background: var(--mainWhite);
-  border: 1px solid var(--mainWhite);
-
+  background: rgba( 55, 112, 189, 0.1 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 2.5px );
+-webkit-backdrop-filter: blur( 2.5px );
+border-radius: 10px;
+border: 1px solid transparent;
   position: fixed;
   z-index: 1;
   display: flex;
@@ -94,6 +107,8 @@ body {
   justify-content: center;
   align-items: center;
   top: 0;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 /* لیست منوی پیمایش */
 .nav_container .nav_link {
@@ -182,9 +197,10 @@ ul.nav_link li.nav_item a:hover {
 /* change theme */
 .nav_container .uil {
   font-size: 1.3rem;
-  color: var(--hue-color);
+  color: var(--input-color);
 
   cursor: pointer;
+  
 }
 
 /* Add a blue background color to navigation links on hover */
@@ -245,8 +261,8 @@ ul.nav_link li.nav_item a:hover {
   align-items: center;
   max-width: 50%;
   height: auto;
-  margin: 10% auto;
- background: rgba( 55, 112, 189, 0.1 );
+  margin: 5% auto;
+  background: rgba( 55, 112, 189, 0.1 );
 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 backdrop-filter: blur( 2.5px );
 -webkit-backdrop-filter: blur( 2.5px );
@@ -262,9 +278,11 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
   padding: 0.7rem;
   border-radius: 12px;
   outline-style: none;
-  box-shadow: 0 10px 120px rgba(209, 186, 186, 0.959);
-  background: var(--mainWhite);
-  border: 1px solid rgba(255, 255, 255, 0.966);
+   background: var(--first-color-second);
+
+backdrop-filter: blur( 2.5px );
+-webkit-backdrop-filter: blur( 2.5px );
+ border: 1px solid rgba( 255, 255, 255, 0.18 );
   width: 250px;
   color: var(--input-color);
 }
@@ -300,7 +318,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  color: var(--title-color);
+  color: var(--input-color);
 }
 
 .log_footer > a {
@@ -311,7 +329,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
   font-size: 1rem;
 }
 .log_footer > a:hover {
-  color: var(--primaryColor);
+  color: var(--input-color);
 }
 .error {
   background-color: #f2dede;
@@ -390,19 +408,14 @@ input[type="email"]:focus {
   align-items: center;
   gap: 1rem;
   max-width: 50%;
-  height: auto;
-  box-shadow: 0 3px 3px rgba(209, 186, 186, 0.959);
-  background: var(--mainWhite);
-  border: 1px solid var(--border-color);
-
-  border-radius: 12px;
-  margin: 10% auto;
-  background: rgba( 55, 112, 189, 0.1 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+ margin: 5% auto;
+   background: var(--secondaryColor);
+box-shadow: 0 1px 8px 0 var(--border-color);
 backdrop-filter: blur( 2.5px );
--webkit-backdrop-filter: blur( 2.5px );
+-webkit-backdrop-filter: blur( 2.5px);
 border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
+border: 1px solid var(--border-color);
+overflow-y: hidden;
 }
 
 .reg_form_Container form input {
@@ -410,9 +423,11 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
   padding: 0.7rem;
   border-radius: 12px;
   outline-style: none;
-  box-shadow: 0 10px 120px rgba(209, 186, 186, 0.959);
-  background: var(--mainWhite);
-  border: 1px solid rgba(255, 255, 255, 0.966);
+   background: var(--first-color-second);
+
+backdrop-filter: blur( 2.5px );
+-webkit-backdrop-filter: blur( 2.5px );
+ border: 1px solid rgba( 255, 255, 255, 0.18 );
   width: 250px;
   color: var(--input-color);
 }
@@ -461,24 +476,31 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
   align-items: center;
   max-width: 90%;
   height: auto;
-  backdrop-filter: blur(15px) saturate(120%);
-  -webkit-backdrop-filter: blur(16px) saturate(120%);
-  background-color: rgba(17, 25, 40, 0.3);
-  border-radius: 7px;
+background: rgba( 55, 112, 189, 0.1 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 2.5px );
+-webkit-backdrop-filter: blur( 2.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
   margin: 2rem auto;
   padding: 1rem;
-  color: var(--mainWhite);
+  color: var(--input-color);
   line-height: 2;
+ 
+}
+.about_container .list{
+  margin-right: 20px;
 }
 .about_title h1 {
   font-size: 1.9rem;
-  color: var(--mainWhite);
+ color:var(--input-color);
   margin-top: 4rem;
   padding: 1.5rem;
   text-align: center;
+ 
 }
 .about_title h5 {
-  color: var(--mainWhite);
+  color:var(--input-color);
 
   padding: 0.2rem;
   text-align: center;
@@ -582,11 +604,7 @@ td {
   align-items: center;
   width: 100%;
   height: auto;
-  backdrop-filter: blur(11px) saturate(120%);
-  -webkit-backdrop-filter: blur(16px) saturate(120%);
-  background-color: rgba(17, 25, 40, 0.3);
-
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  
   margin: 6rem auto 0;
   padding: 1rem;
   color: white;
@@ -605,12 +623,12 @@ td {
   align-items: center;
   gap: 0.7rem;
   padding: 1rem;
-  backdrop-filter: blur(15px) saturate(120%);
-  -webkit-backdrop-filter: blur(16px) saturate(120%);
-  background-color: rgba(17, 25, 40, 0.3);
-
-  border: 1px solid rgba(255, 255, 255, 0.125);
-  border-radius: 7px;
+  background: rgba( 55, 112, 189, 0.1 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 2.5px );
+-webkit-backdrop-filter: blur( 2.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 .contact__information {
@@ -620,10 +638,10 @@ td {
 }
 .contact__icon {
   font-size: 25px;
-  color: rgba(12, 201, 198, 0.8);
+  color: var(--input-color);
 }
 .contact__subtitle a {
-  color: rgba(13, 194, 240, 0.76);
+  color: var(--input-color);
 }
 .map {
   border-radius: 5px;
@@ -636,10 +654,10 @@ td {
   justify-content: center;
   align-items: center;
   gap: 1.2rem;
-  margin: 30px auto 0;
+  margin: 70px auto 0;
   max-width: 1268px;
 height: 150px;
-  border: 1px solid var(--first-color-second);
+ 
   padding: 50px;
  background: rgba( 55, 112, 189, 0.1 );
 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
@@ -728,11 +746,17 @@ div .table_search {
   text-align: center;
   border: 1px solid transparent;
   color:var(--input-color);
+ background: var(--bodyColor);
+ 
+border: 1px solid var(--secondaryColor);
+}
+.table_search tr:hover{
+  background-color: var(--secondaryColor);
   
 }
 
 .table_search th {
-  background-color: var(--secondaryColor);
+  background-color: var(--mainGrey);
 }
 
 /* charge page zarinpalapi.php */
@@ -749,11 +773,14 @@ div .table_search {
   margin: 70px auto 0;
   max-width: 500px;
 
-  border: 1px solid var(--first-color-second);
+
   padding: 50px;
-  border-radius: 12px;
-  background-color: var(--bodyColor);
-  box-shadow: 0px 0px 10px var(--primaryColor);
+  background: rgba( 55, 112, 189, 0.1 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 2.5px );
+-webkit-backdrop-filter: blur( 2.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
   font-size: 0.99rem;
 }
 
@@ -809,7 +836,7 @@ form .charge {
   border: 1px solid #ddd;
   padding: 8px;
   color:var(--mainBlack);
-  background-color: var(--body-color);
+  background-color: var(--secondaryColor);
   font-size: 12px;
    
  
@@ -820,7 +847,7 @@ form .charge {
 .ticket-table th {
   background-color:var(--mainGrey);
   text-align: center;
-   background-color: var(--body-color);
+   background-color: var(--first-color-second);
    
 }
 

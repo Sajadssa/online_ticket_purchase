@@ -1,4 +1,7 @@
 const themeButton = document.getElementById("theme-button");
+const body = document.querySelector("body");
+const eptDayBackground = "/online_ticket_purchase/assets/images/Ept_Banner.jpg";
+const eptNightBackground = "/online_ticket_purchase/assets/images/Ept_Banner_night.jpg";
 const darkTheme = "dark-theme";
 const iconTheme = "uil-sun";
 
@@ -24,6 +27,7 @@ if (selectedTheme) {
 
 
     );
+    
     themeButton.classList[selectedIcon === "uil-moon" ? "add" : "remove"](
         iconTheme
 
@@ -32,13 +36,22 @@ if (selectedTheme) {
 
 // Activate / deactivate the theme manually with the button
 themeButton.addEventListener("click", () => {
+   
     // Add or remove the dark / icon theme
     document.body.classList.toggle(darkTheme);
     themeButton.classList.toggle(iconTheme);
 
-
-
-
+    if (body.style.backgroundImage === eptDayBackground) {
+        body.style.backgroundImage = eptNightBackground;
+    } else {
+        body.style.backgroundImage = eptDayBackground;
+    }
+  
+     
+      
+    
 
 
 });
+
+   

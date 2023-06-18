@@ -1,6 +1,7 @@
 /* kamadatepicker - version 1.5.3 */
 /* import font iranYekan */
 @import url("./assets/css/font.css");
+@import url("./assets/css/style.css");
 *{
   box-sizing: border-box;
   font-family: "IranYekan";
@@ -18,8 +19,14 @@
 }
 
 .bd-main {
-  background-color: #fff;
-  border: 1px solid hsl(300, 120%,25%);
+background: var(--secondaryColor);
+box-shadow: 0 8px 32px 0 var(--primaryColor);
+backdrop-filter: blur( 2.5px );
+-webkit-backdrop-filter: blur( 2.5px );
+ 
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+  
+  /* border: 1px solid hsl(300, 120%,25%); */
   border-radius: 7px;
   padding: 5px;
   z-index: 9999;
@@ -47,7 +54,12 @@
 .bd-calendar table {
   border: none;
   
-
+ background: var(--secondaryColor);
+box-shadow: 0 8px 32px 0 var(--primaryColor);
+backdrop-filter: blur( 2.5px );
+-webkit-backdrop-filter: blur( 2.5px );
+ border-radius: 7px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
    
 }
 
@@ -79,6 +91,7 @@
   border: none;
   cursor: pointer;
   font-size: .85rem;
+  border-radius: 7px;
 }
 
 .bd-next,

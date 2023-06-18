@@ -92,13 +92,8 @@ if (isset($_POST['register'])) {
         </form>
     </div>
 
-    <!-- hero -->
-    <section class="hero">
-        <div class="hero-inner">
 
-
-        </div>
-    </section>
+    
 
 </body>
 

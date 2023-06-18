@@ -40,7 +40,7 @@ if(isset($_POST['buyticket'])) {
     
 }
 else{
-    echo '<div style=" position :absolute;margin:30px 50px; color:tomato" class="no-print">   خطا در اتصال سرور </div>';
+    echo '<div style=" position :absolute;margin:30px 50px; color:tomato" class="print no-print">   خطا در اتصال سرور </div>';
 }
 
 ?>
@@ -74,7 +74,7 @@ if (!empty($sourceSelectizeValue)) {
 
 <!-- افزودن استایل ها و اسکریپت های مورد نیاز -->
 
-<select id="source" name="source"  class="no-print" placeholder="مبدا">
+<select id="source" name="source"  class="no-print print" placeholder="مبدا">
     <option  value="">انتخاب کنید</option>
     <!-- افزودن گزینه های دیگر -->
 </select>
@@ -209,15 +209,15 @@ if (isset($_POST['buyticket'])) {
                 if($available_tickets>0){
                 echo "<div  style='margin:20px 50px; color:lightgreen'> نتایج جستجو</div>";
                 echo "<div class='container'>
-         <table class='table_search' style=' width:1268px;
-        border-collapse: collapse;
-        margin-top: 20px;
-        color: var(--title-color);' >";
+         <table class='table_search' >";
                 echo "<thead>";
                 echo "<tr>";
-                echo "<th style=' padding: 10px;
-        text-align: center;
-        border: 1px solid transparent;' >ثبت خرید</th>";
+                echo "<th style='  background-color: var(--mainGrey);
+
+backdrop-filter: blur( 2.5px );
+-webkit-backdrop-filter: blur( 2.5px );
+ 
+border: 1px solid var(--secondaryColor);' >ثبت خرید</th>";
                 echo "<th>ردیف</th>";
                 echo "<th>مبدا</th>";
                 echo "<th>مقصد</th>";
@@ -232,7 +232,12 @@ if (isset($_POST['buyticket'])) {
                 
                 
                 echo "<tr>";
-                echo "<td>";
+                echo "<td style=' background: var(--bodyColor);
+
+backdrop-filter: blur( 2.5px );
+-webkit-backdrop-filter: blur( 2.5px );
+border-radius: 5px;
+border: 1px solid var(--secondaryColor);'>";
                 echo "<form method='POST' action=''>
       <input type='hidden' name='source' value='" . $source . "'>
       <input type='hidden' name='destin' value='" . $destin . "'>
@@ -318,7 +323,7 @@ if (isset($_POST['buyticket'])) {
 
 // اگر کاربر باتن رو کلیک نکرده بود
 else {
-    echo "<div style='margin:20px 50px; color:tomato'class='no-print' >لطفاً فرم را پر کنید و برای جستجو ارسال کنید.</div>";
+    echo "<div style='margin:20px 50px; color:rgba(255,1,1,.9);'class='no-print' >لطفاً فرم را پر کنید و برای جستجو ارسال کنید.</div>";
 }
 
 ?>

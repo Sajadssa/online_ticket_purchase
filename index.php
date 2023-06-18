@@ -19,10 +19,6 @@ include 'NavBar.php';
      
 </head>
 <body>
-     <!-- hero  -->
-     <div >
-       <!--   <img src="./assets/images/Ept_Banner.jpg"  alt="" srcset=""> -->
-     </div>
-    
+   
 </body>
 </html>
