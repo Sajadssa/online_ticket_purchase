@@ -25,6 +25,7 @@
                 <div class="bar bar-two"></div>
                 <div class="bar bar-three"></div>
             </div> -->
+            <!-- نمایش لوگوی وب سایت -->
             <div class="logo">
 
 
@@ -33,7 +34,7 @@
 
 
 
-
+<!-- تعریف لینک صفحات -->
 
             <ul class="nav_link">
                 <li class="nav_item"><a href="index.php">خانه</a></li>
@@ -72,7 +73,7 @@ function preventPageRefresh(event) {
  
     
 
-    
+    <!-- فایل جاوااسکریپتی که بصورت خارجی به این صفحه لینک شده که عملیات رفتاری وب سایت رو انجام می دهد مانند تغییر ظاهر وب سایت از لایت به دارک و... -->
     <script src="assets/js/index.js"></script>
 
 </body>

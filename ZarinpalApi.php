@@ -81,7 +81,7 @@ if (isset($_POST['submit'])) {
                     $tracking_id = str_pad(rand(0, pow(10, 9) - 1), 10, '0', STR_PAD_LEFT);
                     $purchase_date = date('Y,m,d');
 
-
+// درج اطلاعات بلیط در جدول خرید
                     $insertPurchase = "INSERT INTO purchase (id, idTL, passengers, total_price,tracking_id,purchase_date) VALUES ('$user_id', '$idTL', '$passengers', '$total_price','$tracking_id','$purchase_date')";
                     mysqli_query($con, $insertPurchase);
 
@@ -196,7 +196,6 @@ if (isset($_POST['submit'])) {
                         mysqli_query($con, $deleteTemporary);
 
                    
-                        // echo '<div style="color: green; margin-right:50px">عملیات خرید با موفقیت انجام شد.</div>';
                     // رفتن به صفحه ticket_info
                     header("location:ticket_info.php");
 
@@ -253,7 +252,7 @@ ob_end_flush();
     
     <label for="remark">توضیحات:</label>
         <input type="text" name="remark" id="remark" value=" شارژ کیف پول " required>
-    
+    <!-- تعریف دو حالت برای دکمه در صورت شارژ برای بار اول حالت دکمه به صورت پرداخت و در صورت افزایش موجودی به بروز رسانی تغییر حالت می دهد -->
         <input type="submit" name="submit" value="<?php echo $wallet_amount > 0 ? 'بروزرسانی' : 'پرداخت'; ?>">
     </form>
 
@@ -264,5 +263,5 @@ ob_end_flush();
 </div>
 
 
-
+<!--  نمایش پیغام -->
 <p><?php echo $message ?? ''; ?></p>
