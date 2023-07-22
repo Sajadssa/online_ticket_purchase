@@ -20,15 +20,20 @@
     <header>
         <nav class="nav_container no-print">
 
-            </div>
-            <!-- نمایش لوگوی وب سایت -->
+            <!-- <div class=" toggler">
+                <div class="bar bar-one"></div>
+                <div class="bar bar-two"></div>
+                <div class="bar bar-three"></div>
+            </div> -->
             <div class="logo">
 
 
                 <img src="./assets/images/logo.jpg" alt="logo" />
             </div>
 
-            <!-- تعریف لینک صفحات -->
+
+
+
 
             <ul class="nav_link">
                 <li class="nav_item">
@@ -61,13 +66,18 @@
         </nav>
     </header>
 
-    <script>
-    function preventPageRefresh(event) {
-        event.preventDefault(); // جلوگیری از رفرش کردن صفحه
-    }
-    </script>
+<script>
+   
 
-    <!-- فایل جاوااسکریپتی که بصورت خارجی به این صفحه لینک شده که عملیات رفتاری وب سایت رو انجام می دهد مانند تغییر ظاهر وب سایت از لایت به دارک و... -->
+
+function preventPageRefresh(event) {
+      event.preventDefault(); // جلوگیری از رفرش کردن صفحه
+}
+</script>
+ 
+    
+
+    
     <script src="assets/js/index.js"></script>
 
 </body>
