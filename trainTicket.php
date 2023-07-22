@@ -1,13 +1,13 @@
 
 
 <?php
-ob_start();
+ob_start();//جهت جلوگیری از تداخل هدر صفحه هنگام ارسال اطلاعات از یک صفحه به صفحه دیگر
 
-session_start();
+session_start();//بررسی کوکی ها
 include 'Server.php'; // افزودن کدهای مربوط به اتصال به دیتابیس
 include 'functions.php';
 include 'NavBar.php';
-
+// چک کردن اطلاعات کاربر ی که لاگین شده
 $user_data = check_login($con);
 
 // بررسی ارسال اطلاعات فرم به سرور
@@ -61,6 +61,7 @@ else{
 
 
 <?php
+// جهت تایپ در سلکت آپشن ها با استفاده از تابع زیر
 // در صفحه PHP خود، بررسی کنید که آیا کوکی sourceSelectizeValue مقدار دارد یا خیر
 $sourceSelectizeValue = isset($_COOKIE['sourceSelectizeValue']) ? $_COOKIE['sourceSelectizeValue'] : '';
 
@@ -109,12 +110,12 @@ $(document).ready(function() {
     }
 });
 </script>
-
+<!-- افزودن کتابخانه jquery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
    <!-- #endregion -->
 </head>
 <body>
-  
+  <!-- کدهای مربوط به ساخت فرم خرید بلیط -->
 
     <div class="container no-print">
         <form class="formbuy" method="post" action="#">
@@ -126,16 +127,20 @@ $(document).ready(function() {
             <select name="source" id="source" placeholder="شهر مبدا" required>
                 <option value="">شهر مبدا</option>
                 <?php
+                //بازیابی شهرمبدا که در جدول مبدا در پایگاه داده ذخیره شده
                 $select = "SELECT * FROM source_city";
                 $result = mysqli_query($con, $select);
                 if (isset($_POST['buyticket'])){
                     $id_CTS = $_POST['idCTS'];
                 }
+                //اعمال حلقه بر آرایه فوق که نتیجه اجرا کوئری فوق است
                 foreach ($result as $key => $value) {
+                    //  نمایش شهرها براساس آی دی انتخاب شده
                     echo '<option value="' . $value['idCTS'] . '">' . $value['City'] . '</option>';
                 }
                 ?>
             </select>
+            <!-- توضیح این قسمت مشابه به بلوک کد مربوط به شهر مقصد است -->
             <select name="destin" id="destin" placeholder="شهر مقصد" required>
                 <option value="">شهر مقصد</option>
                 <?php
@@ -170,7 +175,7 @@ if (isset($_POST['buyticket'])) {
     $depart_date = $_POST['depart_date'];
     $return_date = isset($_POST['return_date']) ? $_POST['return_date'] : '';
     $type = $_POST['type'];
-
+//کوئری جستجو در لیست مسیرها برای یافتن بلیط
     $query = "SELECT CR.*, SC.City AS source_city, DS.city AS destination_city, TL.departure_date as depart_date, TL.arrival_date as return_date, TL.price, TL.Description, TL.is_round_trip,TL.idTL,
     TL.available_tickets
     FROM city_routes CR 
@@ -178,8 +183,12 @@ if (isset($_POST['buyticket'])) {
     INNER JOIN destination_city DS ON DS.idCTD = CR.idCTD 
     INNER JOIN train_lines TL ON TL.idCTR = CR.idCTR 
     WHERE SC.idCTS = '$source' AND DS.idCTD = '$destin' AND TL.departure_date = '$depart_date'";
-
-    if ($type == 'round-trip') {
+//صفر و یایک گذاشتن در ستون مربوط به نوع سفر باتوجه به آنچه کاربر انتخاب می کند
+//بسته به نوع سفر این عملیات انجام میشود
+//یعنی ما مشخص کردیم اگر کاربر نوع سفر را رفت و برگشت انتخاب کند ستون مورد نظر را 1 قرار بده
+   //که اینکار با یک کوئری انجام میشود
+if ($type == 'round-trip') {
+        
         if (isset($_POST['return_date'])) {
             $return_date = $_POST['return_date'];
             $query .= " AND TL.arrival_date = '$return_date' AND TL.is_round_trip = '1'";
@@ -190,22 +199,23 @@ if (isset($_POST['buyticket'])) {
     } else {
         $query .= " AND TL.is_round_trip = '0'";
     }
-
+//نتیجه اجرای کوئری رو به صورت یک آرایه ذخیره کن
     $result = mysqli_query($con, $query);
    
-
+//اگر پرس وجوی بالا رکورد داشته باشد
     if (mysqli_num_rows($result) > 0  ) {
      
        
 
-           
+           //برو بر روی نتیجه اجرای کوئری یک حلقه اعمال کن که خروجی کوئری به صورت یک آرایه می باشد و ما برای نمایش آیتم های این آرایه از حلقه استفاده می کنیم
             $count = 1;
             while ($row = mysqli_fetch_assoc($result)) {
 
-         
+         //جستجوی ما در لیست مسیرها به صورتی است که آن مسیر یا بالطبع آن سرویس ظرفیتش تکمیل نشده باشد پس برای اینکار باید ابتدا ظرفیت مسیر انتخابی را چک کنیم
             $available_tickets = $row['available_tickets'];
             // echo $available_tickets;
-
+// اگر سرویس مدنظر ظرفیت داشت
+//آنوقت نتیجه بازیابی اطلاعات جستجوی بلیط رو به صورت یک جدول و با اعمال استایل خاصی و افزودن دکمه ثبت خرید به کاربر نشان بده
                 if($available_tickets>0){
                 echo "<div  style='margin:20px 50px; color:lightgreen'> نتایج جستجو</div>";
                 echo "<div class='container'>
@@ -259,7 +269,7 @@ border: 1px solid var(--secondaryColor);'>";
       name='purchase'
       value='ثبت خرید'>
    </form>";
-
+// نمایش داده های جدول نتیجه اجرای کوئری فوق
                 echo "</td>";
 
                 echo "</td>";
@@ -271,6 +281,7 @@ border: 1px solid var(--secondaryColor);'>";
                 echo "<td>" . $row['price'] . " تومان</td>";
                 echo "<td>" . $row['Description'] . "</td>";
                 echo "<td>";
+                //چون در نوع سفر1 یا 0 ذخیره می شود بیا نوع سفر با مقدار 1 عبارت رفت و برگشت را در جدول نشان بده در غیر اینصورت یعنی صفر بود عبارت یک طرفه را نشان بده
                 if ($row['is_round_trip'] == 0) {
                     echo "یک طرفه";
                 } elseif ($row['is_round_trip'] == 1) {
@@ -361,17 +372,19 @@ if(!$user_data){
 
         // اجرای کوئری بالا
         $result = mysqli_query($con, $query);
-
+// در این کوئری ما قیمت کل را محاسبه می کنیم یعنی قیمت کل بلیط به ازای هر مسافر را در تعداد ممسافران ضرب می کنیم تا قیمت کل بلیط بدست آید.
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
             $idTL = $row['idTL'];
             $price = $row['price'];
             $available_tickets = $row['available_tickets'];
          /*    echo $available_tickets; */
+        //  محاسبه قیمت کل در نتیجه اجرای کوئری بالا
             $total_price = $price * $passengers;
 
 
         } else {
+            // جهت جلوگیری از ورود رکورد تکراری به جدول در صورت تعیین نکردن ایندکس برای جدول خرید
             $error = mysqli_error($con);
             if (strpos($error, 'Duplicate entry') !== false) {
                 echo '<div class="error-message">خطا: رکورد تکراری وجود دارد.</div>';
@@ -385,21 +398,28 @@ if(!$user_data){
         // echo $total_price;
 
         $user_id = $user_data['id'];
+// بعداز زدن کمه جستجو و یافتن مسیر جستجو شده و همچنین چک کردن کاربری که لاگین شده و محاسبه قیمت کل سرویس انتخاب شده 
 
-
+//بایستی موجودی کاربر را چک کنیم در این کوئری موجودی کاربری که لاگین شده را چک می کنیم
 
         $query_wallet = "SELECT amount FROM wallet WHERE id = '$user_id'";
         $result_wallet = mysqli_query($con, $query_wallet);
 
-
+// نتیجه اجرای کوئری را به صورت آرایه در بیار
         $row_wallet = mysqli_fetch_assoc($result_wallet);
+        // موجودی کاربر رو برای چک کردن در این متغیر ذخیره کن
         $amount = $row_wallet['amount'];
+
+        // حالت اول: کاربر موجودی دارد یعنی جدول کیف پول نتیجه اجرای کوئری بالا رکورد دارد و باید کوجودی چک شود
+
   
-        // موجودی است و باید بررسی شود
         if (mysqli_num_rows($result_wallet) > 0) {
 
-
+// حالتی که موجودی موجود دارد اما مقدار آن کمتر از قیمت کل هست
+//ما برای اینکه کاربر بتواند در سریعترین زمان ممکن بلیط خودش را بخرد اطلاعات کاربر و نوع سرویس و مسیر انتخاب شده و ظرفیت مسافر را دریک جدول موقت ذخیره می کنیم تا بتوانیم ازاین جدول جهت ارزیابی موجودی کاربر و کل قیمت بلیط استفاده کنیم
+//در این حالت این اطلاعات بصورت موقت در یک جدول ذخیره می شود یا بعبارتیثبن می شود
             if($amount< $total_price){
+
                 // Insert data into Temporory table
                 $query = "INSERT INTO Tempororys (id, idTL, passengers, total_price,available_tickets) VALUES ('$user_id', '$idTL', '$passengers', '$total_price','$available_tickets')";
                 mysqli_query($con, $query);
@@ -414,7 +434,7 @@ if(!$user_data){
 
             }
             // بررسی موجودی با قیمت کل
-
+// در جدولهایی که امکان ثبت اطلاعات تکراری وجو داشت را با استفاده از یک عدد رندوم متناسب با نام آن جدول در بانک ذخیره می کنیم تا هر رکورد منحصر بفرد باشد
             if ($amount>0 && $amount >= $total_price) {
 
              
@@ -487,7 +507,7 @@ ob_end_flush();
 ?>
 
 
-
+<!-- کد جاوااسکریپت برای اینکه اگر کاربر نوع سفر را رفت و برگشت انتخاب کرد المان تاریخ رفت وبرگشت را فعال کند در غیر این صورت آن را غیر فعال کند. -->
    <script>
     var typeSelect = document.getElementById("type");
     var returnDateInput = document.getElementById("return_date");
@@ -507,7 +527,7 @@ ob_end_flush();
 <!-- import jquery for use datepicker shamsi -->
     <script src="assets/js/jQuery.js"></script>
     <script src="assets/js/kamadatepicker.min.js"></script>
-
+<!--  دستکاری کردن تنظیمات تقویم شمسی-->
     <script>
         let option={
            nextButtonIcon:"assets/images/timeir_next.png",
@@ -518,9 +538,9 @@ ob_end_flush();
            sync:true,
       
         }
-kamaDatepicker("datepicker",option);
-kamaDatepicker("return_date",option);
- 
+kamaDatepicker("datepicker",option);//تاریخ رفت
+kamaDatepicker("return_date",option);//تاریخ برگشت
+ //این تابع جهت دستکاری تقویم شمسی در نظر گرفته شده است
 function preventPageRefresh(event) {
       event.preventDefault(); // جلوگیری از رفرش کردن صفحه
 }

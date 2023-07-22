@@ -1,7 +1,7 @@
 const themeButton = document.getElementById("theme-button");
 const body = document.querySelector("body");
-const eptDayBackground = "/online_ticket_purchase/assets/images/Ept_Banner.jpg";
-const eptNightBackground = "/online_ticket_purchase/assets/images/Ept_Banner_night.jpg";
+const eptDayBackground = "/online_ticket_purchase/assets/images/trainPerspective.jpg";
+const eptNightBackground = "/online_ticket_purchase/assets/images/trainPerspective.jpg";
 const darkTheme = "dark-theme";
 const iconTheme = "uil-sun";
 

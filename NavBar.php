@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
-
+    <!-- import library unicons -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 </head>
 
@@ -20,40 +20,40 @@
     <header>
         <nav class="nav_container no-print">
 
-            <!-- <div class=" toggler">
-                <div class="bar bar-one"></div>
-                <div class="bar bar-two"></div>
-                <div class="bar bar-three"></div>
-            </div> -->
+            </div>
+            <!-- نمایش لوگوی وب سایت -->
             <div class="logo">
 
 
                 <img src="./assets/images/logo.jpg" alt="logo" />
             </div>
 
-
-
-
+            <!-- تعریف لینک صفحات -->
 
             <ul class="nav_link">
-                <li class="nav_item"><a href="index.php">خانه</a></li>
+                <li class="nav_item">
+                <a href="index.php">صفحه اصلی</a>
 
-                <li class="nav_item"><a href="About.php">درباره ما </a></li>
-                <li class=" nav_item"><a href="Contact.php"> ارتباط با ما</a></li>
-                <li class=" nav_item">
+                </li> 
+                <li class="nav_item">
                     <a href="login.php"> ورود/
                         <a href="Registration.php" <span>عضویت</span>
 
-                        </a>
+
+                </li>
+
+                <li class="nav_item"><a href="About.php"> راهنمای سایت</a></li>
+                <li class=" nav_item"><a href="Contact.php"> ارتباط با ما</a></li>
+                <li class=" nav_item">
+
+
+                    </a>
                 </li>
                 <li class="nav_item">
 
-                    <i class="uil uil-moon change-theme uil-sun"  id="theme-button"></i>
+                    <i class="uil uil-moon change-theme uil-sun" id="theme-button"></i>
 
                 </li>
-
-
-
 
             </ul>
 
@@ -61,18 +61,13 @@
         </nav>
     </header>
 
-<script>
-   
+    <script>
+    function preventPageRefresh(event) {
+        event.preventDefault(); // جلوگیری از رفرش کردن صفحه
+    }
+    </script>
 
-
-function preventPageRefresh(event) {
-      event.preventDefault(); // جلوگیری از رفرش کردن صفحه
-}
-</script>
- 
-    
-
-    
+    <!-- فایل جاوااسکریپتی که بصورت خارجی به این صفحه لینک شده که عملیات رفتاری وب سایت رو انجام می دهد مانند تغییر ظاهر وب سایت از لایت به دارک و... -->
     <script src="assets/js/index.js"></script>
 
 </body>

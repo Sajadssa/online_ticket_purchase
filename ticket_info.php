@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start();//بررسی کوکی ها
 require_once 'functions.php';
 require_once 'Server.php';
  
@@ -7,6 +7,8 @@ require_once 'Server.php';
 $user_data = check_login($con);
 
 $user_id = $user_data['id'];
+//کوئری نمایش جدول برای نشان دادن اطلاعات تکمیلی بلیط خربداری شده
+//دقت شود چون اخرین رکورد مورد نطر جدول خرید برای ما مد نظر است یعنی مربوط به خرید جاری می باشد را ار این جدول استخراج می کنیم 
 $query = "SELECT usr.username, usr.mobile, usr.national_code, usr.email, cr.Route, TL.departure_date AS depart_date,
 TL.arrival_date AS return_date, tl.train_name, pr.total_price, TL.Description, tl.departure_time, tl.arrival_time,
 pr.purchase_date, pr.passengers
@@ -37,7 +39,9 @@ $html = '
 
 <body >';
 
-
+// نمایش جدول 
+//تعریف یک سری استایل ها تا هنگام چاپ نمایش داده نشود 
+// دادن استایل های مورد نظر به حدول
 $html = '<table class="ticket-table">
 
 <tr class="print">
@@ -68,7 +72,7 @@ $html = '<table class="ticket-table">
             <th>تعداد مسافران</th>
             <th class="no-print">چاپ</th>
         </tr>';
-
+// اعمال حلقه بر تک تک آیتم های آرایه که نتیجه اجرای کوئری فوق است
 while ($row = mysqli_fetch_assoc($result)) {
     $html .= '<tr>
             <td>' . $row['username'] . '</td>

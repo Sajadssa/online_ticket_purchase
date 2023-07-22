@@ -1,10 +1,11 @@
 <?php
-session_start();
+session_start();//
 include 'Server.php'; //افزودن کدهای مربوط به اتصال به دیتابیس
 include 'functions.php';
 include 'NavBar.php';
 $msg = "";
 $msgsuc = "";
+// ارزیابی اطلاعات ورودی کاربر توسط سرور چک می کند که آیا این کاربر در پایگاه داده هست یانه؟
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     //something was posted
     $name = $_POST['name'];
@@ -18,21 +19,23 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         //read from  database
        
 
-        
+        // با استفاده از کوئری انتخاب نام کاربری که از طریق فرم ورود در المان مربوطه ثبت می شود را بازیابی می کنیم در واقع اطلاعات کاربر را از بانک می خوانیم (عمل گرفتن)
             $query = "select * from users where username='$name' limit 1 ";
 
-
+// اجرا
             $result=mysqli_query($con, $query);
+            // بررسی نتیجه اجرا
             if($result){
-
+// درصورت وجود رکورد مورد نظر
                 if ($result && mysqli_num_rows($result) > 0) {
-
+// نتیجه را متغییر زیر ذخیره کن
                     $user_data = mysqli_fetch_assoc($result);
-
+// نتیجه اجرای کوئری فوق یک جدول یا پرس و جو است
+// اگر رمزعبور ذخیره شده با آنچه کاربر ارسال می کند برابر باشد آنگاه آی دی کاربر رو بخون و دریک متغییر و یا درصورت وجود از کوکی ها دریافت من 
                     if ($user_data['pass']===$password) {
                         
                         $_SESSION['user_id'] =$user_data['user_id'];
-                        
+                        // درصورت برقراری شرط بالا کاربر به صفحه زیر منتقل می شود
                         header("Location:trainticket.php");
                     
                     
@@ -43,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             }
          
        
-
+// اگر اطلاعات ارسالی نادرست باشد سرور پاسخ خطا به درخواست کاربر می دهد
              
             $msg = "<div class='danger' style='display:block;color:red;margin:6rem auto 0;text-align:center;'>  نام کاربری یا رمز عبور اشتباه است</div>";
             echo $msg;
@@ -55,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 }
 
-
+// کدهای html
 ?>
 
 <!DOCTYPE html>
